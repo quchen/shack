@@ -1,0 +1,51 @@
+name:                shack
+version:             0
+synopsis:            Quchen's Stack template
+description:         See README.md
+homepage:            https://github.com/quchen/shack#readme
+license:             BSD3
+license-file:        LICENSE.md
+author:              David »quchen« Luposchainsky <dluposchainsky+shack (λ) gmail>
+maintainer:          David »quchen« Luposchainsky <dluposchainsky+shack (λ) gmail>
+copyright:           David »quchen« Luposchainsky <dluposchainsky+shack (λ) gmail>
+category:            Web
+build-type:          Simple
+-- extra-source-files:
+cabal-version:       >=1.10
+
+library
+    build-depends:
+          base >= 4.7 && < 5
+          , text
+          , bytestring
+          , process
+    hs-source-dirs:      src
+    exposed-modules:     System.Process.Shack
+    default-language:    Haskell2010
+    ghc-options:         -Wall
+
+executable shack-exe
+    build-depends:
+          base
+        , shack
+    hs-source-dirs:      app
+    main-is:             Main.hs
+    ghc-options:         -threaded -rtsopts -with-rtsopts=-N -Wall
+    default-language:    Haskell2010
+
+test-suite shack-test
+    build-depends:
+          base
+        , shack
+
+        , doctest
+        , QuickCheck
+    ghc-options:         -threaded -rtsopts -with-rtsopts=-N -Wall
+    type:                exitcode-stdio-1.0
+    hs-source-dirs:      test
+    main-is:             Doctest.hs
+    default-language:    Haskell2010
+
+source-repository head
+  type:     git
+  location: https://github.com/quchen/shack
